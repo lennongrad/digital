@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://yb56gu7vgypo"]
+
+[ext_resource type="Texture2D" uid="uid://b2qyabggrm642" path="res://assets/combatants/placeholderknight/Warrior_Warrior_Texture.png" id="1_oglwj"]
+
+[resource]
+resource_name = "Warrior_Texture"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_oglwj")
+metadata/_gltf_primary_texture_coord = 0

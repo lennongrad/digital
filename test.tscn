@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dhuf51s6fiqm2" path="res://scripting/road.gd" id="2_6uqi0"]
 [ext_resource type="Texture2D" uid="uid://cr18dgmvpq0gs" path="res://assets/battle/floor.png" id="4_ppyta"]
 [ext_resource type="PackedScene" uid="uid://bppyelov4sjdq" path="res://test_combatant.tscn" id="7_ehkex"]
+[ext_resource type="Texture2D" uid="uid://cc18e62cyq10t" path="res://assets/battle/floor_simple.png" id="8_5tkv4"]
 [ext_resource type="Shader" uid="uid://c4ner03umy3o1" path="res://soretro.gdshader" id="9_77dp3"]
 [ext_resource type="Script" uid="uid://bq0ykjh1wtg2v" path="res://match_camera.gd" id="10_00tp4"]
 [ext_resource type="Shader" uid="uid://b2u23co4t8n7p" path="res://assets/combatants/placeholderbot/border2.gdshader" id="10_77dp3"]
@@ -65,6 +66,21 @@ texture_filter = 0
 [sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
 material = SubResource("StandardMaterial3D_57qmd")
 size = Vector2(0.075, 0.075)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3se8"]
+transparency = 1
+albedo_texture = ExtResource("8_5tkv4")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_uty7l"]
+material = SubResource("StandardMaterial3D_a3se8")
+size = Vector2(1.2, 0.8)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_45l4g"]
+material = SubResource("StandardMaterial3D_a3se8")
+size = Vector2(1.2, 0.8)
 orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m0f1"]
@@ -192,11 +208,12 @@ bring_in_x = 0.6
 bring_in_y = 0.65
 
 [node name="Combatant" parent="SubViewportContainer/Test/BattleStage/Floor1" unique_id=432563259 instance=ExtResource("7_ehkex")]
-transform = Transform3D(-0.9680405, 0, 0.25079352, 0, 0.99999994, 0, -0.25079352, 0, -0.9680405, 0, 0, 0)
+transform = Transform3D(-0.9367635, 0, 0.34996274, 0, 0.99999994, 0, -0.34996274, 0, -0.9367635, 0, 0, 0)
+model_name = "Warrior"
 
 [node name="Floor2" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage" unique_id=2000309501]
 transform = Transform3D(0.2775935, 0, 0.96069866, 0, 1.0000002, 0, -0.9606987, 0, 0.27759352, -0.1320493, 0, -0.19344167)
-mesh = SubResource("QuadMesh_57qmd")
+mesh = SubResource("QuadMesh_uty7l")
 
 [node name="RotatingCircle" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage/Floor2" unique_id=1194594718]
 transform = Transform3D(0.8999994, 0, 0, 0, 0.8999994, 0, 0, 0, 0.8999996, 0, 0, 0)
@@ -208,10 +225,11 @@ bring_in_y = 0.65
 
 [node name="Combatant" parent="SubViewportContainer/Test/BattleStage/Floor2" unique_id=2073513467 instance=ExtResource("7_ehkex")]
 transform = Transform3D(0.9799386, 0, -0.19929942, 0, 0.99999976, 0, 0.19929937, 0, 0.97993875, 0, 0, 0)
+model_name = "Robot"
 
 [node name="Floor3" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage" unique_id=1839684361]
 transform = Transform3D(0.7245781, 0, 0.68919295, 0, 1, 0, -0.68919295, 0, 0.7245781, 0.40430498, 0, -0.92023385)
-mesh = SubResource("QuadMesh_57qmd")
+mesh = SubResource("QuadMesh_45l4g")
 
 [node name="RotatingCircle" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage/Floor3" unique_id=1728641105]
 transform = Transform3D(0.8999992, 0, 0, 0, 0.8999992, 0, 0, 0, 0.89999944, 0, 0, 0)
@@ -223,6 +241,7 @@ bring_in_y = 0.65
 
 [node name="Combatant" parent="SubViewportContainer/Test/BattleStage/Floor3" unique_id=335658168 instance=ExtResource("7_ehkex")]
 transform = Transform3D(0.96445704, 0, -0.26423982, 0, 0.9999999, 0, 0.26423982, 0, 0.96445704, 0, 0, 0)
+model_name = "Robot"
 
 [node name="Trace" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage" unique_id=1067684258]
 transform = Transform3D(0.11753224, -0.27601838, -1.2065149e-08, -4.6416246e-16, -1.3113416e-08, 0.29999992, -0.27601838, -0.11753224, -5.1374927e-09, 0.44640046, -0.021153212, 0.030795932)

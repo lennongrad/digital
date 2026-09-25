@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c3nu3n0w6xlnm" path="res://test_combatant.gd" id="1_cdcan"]
 [ext_resource type="PackedScene" uid="uid://dje8gv21mnjkt" path="res://assets/combatants/placeholderbot/Animated Robot by Quaternius - QCm7qe9uNJ.glb" id="2_rtewg"]
+[ext_resource type="PackedScene" uid="uid://b431rdqc8awvk" path="res://assets/combatants/placeholderknight/Warrior.gltf" id="3_rtewg"]
 
-[node name="Node3D" type="Node3D" unique_id=432563259 node_paths=PackedStringArray("model")]
+[node name="Node3D" type="Node3D" unique_id=432563259]
 script = ExtResource("1_cdcan")
-model = NodePath("Robot")
 
 [node name="Robot" parent="." unique_id=686071879 instance=ExtResource("2_rtewg")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
+visible = false
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=944313332]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.220234)
+[node name="Warrior" parent="." unique_id=236923026 instance=ExtResource("3_rtewg")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, 0, 0, 0)
