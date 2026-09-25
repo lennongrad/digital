@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bxthuqb3dja8y" path="res://assets/ui/nibblings/nibbling3.png" id="4_bmjtd"]
 [ext_resource type="Texture2D" uid="uid://cl7epjb2krm3u" path="res://assets/ui/nibblings/nibbling2mask.png" id="5_ub64p"]
 [ext_resource type="Texture2D" uid="uid://c0skr0oc20xdp" path="res://assets/ui/nibblings/nibbling2.png" id="6_wevra"]
-[ext_resource type="Texture2D" uid="uid://wllf4hngir4b" path="res://assets/ui/nibblings/nibbling4.png" id="8_heb20"]
 
 [sub_resource type="SystemFont" id="SystemFont_n0ie2"]
 font_names = PackedStringArray("Courier New")
@@ -36,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 93.0
 offset_top = 68.0
-offset_right = -145.0
+offset_right = -142.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -81,20 +80,20 @@ grow_vertical = 2
 script = ExtResource("2_ow83g")
 label = NodePath("Nibbling1/Label")
 hbox = NodePath("Nibbling4/HBoxContainer")
-gear = NodePath("Nibbling2Mask/Nibbling2")
+gear = NodePath("NibblingPair/Nibbling2Mask/Nibbling2")
 
 [node name="Nibbling1" type="TextureRect" parent="NinePatchRect/View/Nibblings" unique_id=1253860373]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.591
-anchor_top = 0.026
-anchor_right = 0.69200003
-anchor_bottom = 0.09900001
-offset_left = 0.16796875
-offset_top = 0.15200043
-offset_right = -0.184021
-offset_bottom = -0.15200806
+anchor_left = 0.892
+anchor_top = 0.32700002
+anchor_right = 0.99200004
+anchor_bottom = 0.39900002
+offset_left = -0.17382813
+offset_top = -0.08580017
+offset_right = 0.3764038
+offset_bottom = 0.088760376
 grow_horizontal = 2
 texture = ExtResource("2_kshcw")
 
@@ -115,72 +114,28 @@ text = "33234905"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Nibbling3" type="TextureRect" parent="NinePatchRect/View/Nibblings" unique_id=841641796]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.776
-anchor_top = 0.006
-anchor_right = 0.85
-anchor_bottom = 0.060000002
-offset_left = 3.729309
-offset_top = 0.11199999
-offset_right = -0.2000122
-offset_bottom = -1.3105412
-grow_horizontal = 2
-texture = ExtResource("4_bmjtd")
-
-[node name="Nibbling2Mask" type="TextureRect" parent="NinePatchRect/View/Nibblings" unique_id=1908635393]
-clip_children = 1
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.70100003
-anchor_top = -0.094000004
-anchor_right = 0.84400004
-anchor_bottom = 0.16000001
-offset_left = -0.552063
-offset_top = -0.08799744
-offset_right = -0.2880249
-offset_bottom = 0.31999207
-texture = ExtResource("5_ub64p")
-
-[node name="Nibbling2" type="TextureRect" parent="NinePatchRect/View/Nibblings/Nibbling2Mask" unique_id=220680238]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.07
-anchor_right = 1.0
-anchor_bottom = 0.93000007
-offset_left = -0.05395031
-offset_bottom = 0.05088806
-grow_horizontal = 2
-grow_vertical = 2
-offset_transform_enabled = true
-texture = ExtResource("6_wevra")
-
 [node name="Nibbling4" type="TextureRect" parent="NinePatchRect/View/Nibblings" unique_id=1128307317]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.869
-anchor_right = 0.98100007
-anchor_bottom = 0.21800001
-offset_left = -0.088012695
-offset_top = 12.0
-offset_right = -0.11206055
-offset_bottom = -0.26400757
-texture = ExtResource("8_heb20")
+anchor_left = 0.89800006
+anchor_top = 0.19900002
+anchor_right = 0.98
+anchor_bottom = 0.34100002
+offset_left = -1.2902832
+offset_top = -0.23325348
+offset_right = -0.20684814
+offset_bottom = 0.21437073
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/View/Nibblings/Nibbling4" unique_id=803015719]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = 11.0
-offset_right = -11.0
-offset_bottom = -12.0
+offset_left = 7.7026367
+offset_top = 8.403
+offset_right = -7.366272
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -263,3 +218,59 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_conml")
 value = 50.0
 fill_mode = 3
 show_percentage = false
+
+[node name="NibblingPair" type="Control" parent="NinePatchRect/View/Nibblings" unique_id=1105941603]
+layout_mode = 1
+anchor_left = 0.85300004
+anchor_right = 1.005
+anchor_bottom = 0.15300001
+offset_left = 0.01574707
+offset_right = -0.13348389
+offset_bottom = 0.18346405
+
+[node name="Nibbling3" type="TextureRect" parent="NinePatchRect/View/Nibblings/NibblingPair" unique_id=841641796]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45400003
+anchor_top = 0.074
+anchor_right = 0.93700004
+anchor_bottom = 0.469
+offset_left = 0.053966522
+offset_top = -0.028821945
+offset_right = -0.014907837
+offset_bottom = -0.02300644
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bmjtd")
+
+[node name="Nibbling2Mask" type="TextureRect" parent="NinePatchRect/View/Nibblings/NibblingPair" unique_id=1908635393]
+clip_children = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = -0.716
+anchor_right = 0.9250001
+anchor_bottom = 1.3310001
+offset_left = 0.0013125539
+offset_top = 0.015945435
+offset_right = 0.0440979
+offset_bottom = 0.0048599243
+texture = ExtResource("5_ub64p")
+
+[node name="Nibbling2" type="TextureRect" parent="NinePatchRect/View/Nibblings/NibblingPair/Nibbling2Mask" unique_id=220680238]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.079
+anchor_right = 1.0
+anchor_bottom = 0.9250001
+offset_left = -0.007890701
+offset_top = 0.07425785
+offset_bottom = -0.032913208
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture = ExtResource("6_wevra")
