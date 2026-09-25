@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dmwc6elg5j58y"]
+
+[resource]
+resource_name = "Main"
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1.4439225e-06, 0.57538414, 0.8190251, 1)
+metallic_specular = 0.0
+roughness = 0.57
+metadata/extras = {
+"fromFBX": {
+"isTruePBR": false,
+"shadingModel": "Phong"
+}
+}

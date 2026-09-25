@@ -3,18 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://bplfgth7un44o" path="res://assets/battle/roadtexture.png" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://dhuf51s6fiqm2" path="res://scripting/road.gd" id="2_6uqi0"]
 [ext_resource type="Texture2D" uid="uid://cr18dgmvpq0gs" path="res://assets/battle/floor.png" id="4_ppyta"]
+[ext_resource type="PackedScene" uid="uid://bppyelov4sjdq" path="res://test_combatant.tscn" id="7_ehkex"]
+[ext_resource type="Shader" uid="uid://c4ner03umy3o1" path="res://soretro.gdshader" id="9_77dp3"]
+[ext_resource type="Script" uid="uid://bq0ykjh1wtg2v" path="res://match_camera.gd" id="10_00tp4"]
+[ext_resource type="Shader" uid="uid://b2u23co4t8n7p" path="res://assets/combatants/placeholderbot/border2.gdshader" id="10_77dp3"]
 [ext_resource type="Texture2D" uid="uid://cw6k7oerwwoig" path="res://assets/battle/circle.png" id="12_a3se8"]
 [ext_resource type="Texture2D" uid="uid://cdva0gsl72gkv" path="res://assets/battle/trace2.png" id="12_b0q6j"]
 [ext_resource type="Script" uid="uid://bxub16xaqwfrv" path="res://scripting/rotating_circle.gd" id="12_mhym6"]
 [ext_resource type="Texture2D" uid="uid://co3oa7wfdwnb1" path="res://assets/battle/warped.png" id="13_0m0f1"]
 
-[sub_resource type="Environment" id="Environment_g4v7s"]
-background_mode = 1
-background_color = Color(1, 0.003921569, 0.44313726, 1)
-
 [sub_resource type="Compositor" id="Compositor_8uh7m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uh7m"]
+render_priority = 1
 transparency = 4
 albedo_texture = ExtResource("1_37kl0")
 metallic_specular = 0.0
@@ -23,18 +24,28 @@ texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_g4v7s"]
 material = SubResource("StandardMaterial3D_8uh7m")
-size = Vector2(18, 1.2)
+size = Vector2(22, 1.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0q6j"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.019607844)
+transparency = 4
+albedo_color = Color(1, 1, 1, 0.047058824)
 albedo_texture = ExtResource("13_0m0f1")
 uv1_scale = Vector3(10, 10, 10)
 texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_3gngh"]
 material = SubResource("StandardMaterial3D_b0q6j")
-size = Vector2(40, 40)
+size = Vector2(80, 80)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00tp4"]
+transparency = 1
+albedo_color = Color(0.78, 0, 0.49399987, 1)
+uv1_scale = Vector3(10, 10, 10)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_77dp3"]
+material = SubResource("StandardMaterial3D_00tp4")
+size = Vector2(80, 80)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykrsh"]
 transparency = 1
@@ -43,7 +54,8 @@ texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_57qmd"]
 material = SubResource("StandardMaterial3D_ykrsh")
-size = Vector2(2, 1.105)
+size = Vector2(1.2, 0.8)
+orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
 transparency = 1
@@ -52,7 +64,8 @@ texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
 material = SubResource("StandardMaterial3D_57qmd")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.075, 0.075)
+orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m0f1"]
 transparency = 1
@@ -61,7 +74,7 @@ texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_d0u6y"]
 material = SubResource("StandardMaterial3D_0m0f1")
-size = Vector2(2, 3)
+size = Vector2(2.25, 2.65)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b0q6j"]
 load_path = "res://.godot/imported/trace.png-cac078db21d0f67a08d7152fadb74a41.s3tc.ctex"
@@ -73,40 +86,104 @@ texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_a3se8"]
 material = SubResource("StandardMaterial3D_mhym6")
-size = Vector2(1, 3)
+size = Vector2(1.7, 2.8)
 
-[node name="Test" type="Node3D" unique_id=136815841]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tkv4"]
+render_priority = 0
+shader = ExtResource("10_77dp3")
+shader_parameter/step_count = 3
+shader_parameter/thickness = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/fade_start = 538.1000080034345
+shader_parameter/fade_length = 12.0000001639132
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=443927224]
-transform = Transform3D(-3.0762106e-08, -0.7104428, 0.70375496, -3.105444e-08, 0.70375496, 0.7104428, -1, -1.7763568e-15, -4.371139e-08, 1.6865622, 1.4147274, -0.0007904321)
-environment = SubResource("Environment_g4v7s")
+[sub_resource type="QuadMesh" id="QuadMesh_0m0f1"]
+material = SubResource("ShaderMaterial_5tkv4")
+flip_faces = true
+size = Vector2(20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77dp3"]
+render_priority = 0
+shader = ExtResource("10_77dp3")
+shader_parameter/step_count = 3
+shader_parameter/thickness = 2.60000002384192
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/fade_start = 1.0
+shader_parameter/fade_length = 49.60000072419832
+
+[sub_resource type="QuadMesh" id="QuadMesh_5tkv4"]
+material = SubResource("ShaderMaterial_77dp3")
+flip_faces = true
+size = Vector2(20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m0f1"]
+shader = ExtResource("9_77dp3")
+shader_parameter/y_res = 280
+shader_parameter/fisheye = 0.1
+shader_parameter/color_depth = 10.0
+shader_parameter/active = true
+
+[node name="Control" type="Control" unique_id=1604289775]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2142860229]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="Test" type="SubViewport" parent="SubViewportContainer" unique_id=403252852]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/Test" unique_id=443927224]
+transform = Transform3D(-3.2221887e-08, -0.67572826, 0.7371509, -2.9537018e-08, 0.7371509, 0.67572826, -1, 0, -4.3711392e-08, 1.67, 0.868, -0.147)
+cull_mask = 1048573
 compositor = SubResource("Compositor_8uh7m")
 current = true
 fov = 81.3
+far = 2000.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=416986912]
-transform = Transform3D(0.9832549, -0.18223554, -7.9657685e-09, 0, -4.371139e-08, 1, -0.18223554, -0.9832549, -4.2979437e-08, -7.1949997, 0, 3.4040003)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/Test" unique_id=416986912]
+transform = Transform3D(0.9778342, -0.18123087, 0.10485978, -0.1031039, 0.019109137, 0.994487, -0.18223554, -0.9832549, -4.2979437e-08, -7.1949997, 0, 3.4040003)
 
-[node name="Background" type="Node3D" parent="." unique_id=2118919408]
+[node name="Background" type="Node3D" parent="SubViewportContainer/Test" unique_id=2118919408]
 
-[node name="Road" type="MeshInstance3D" parent="Background" unique_id=1218180659]
-transform = Transform3D(0.9832549, -0.18223554, -7.96577e-09, 0, -4.371139e-08, 1, -0.18223554, -0.9832549, -4.2979437e-08, -7.1949997, 0.02730751, 3.4040003)
+[node name="Road" type="MeshInstance3D" parent="SubViewportContainer/Test/Background" unique_id=1218180659]
+transform = Transform3D(0.9998157, -0.019197444, -8.391469e-10, 0, -4.371139e-08, 1, -0.019197444, -0.9998157, -4.370333e-08, -8.61095, 0.027, 1.501)
+sorting_offset = -2.0
 mesh = SubResource("QuadMesh_g4v7s")
 script = ExtResource("2_6uqi0")
 
-[node name="Checkers" type="MeshInstance3D" parent="Background" unique_id=821830674]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.09322739, 0.015395641, 0.017939448)
+[node name="Checkers" type="MeshInstance3D" parent="SubViewportContainer/Test/Background" unique_id=821830674]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.09463996, -0.003038764, 0.019834638)
 mesh = SubResource("QuadMesh_3gngh")
 script = ExtResource("2_6uqi0")
 velocity = 0.05
 
-[node name="BattleStage" type="Node3D" parent="." unique_id=302447091]
+[node name="Checkers2" type="MeshInstance3D" parent="SubViewportContainer/Test/Background" unique_id=1992605198]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.09463996, -0.5554327, 0.019834638)
+mesh = SubResource("QuadMesh_77dp3")
+script = ExtResource("2_6uqi0")
+velocity = 0.05
 
-[node name="Floor1" type="MeshInstance3D" parent="BattleStage" unique_id=715370700]
-transform = Transform3D(0.16256967, -0.8851955, -3.8693123e-08, 0, -3.934025e-08, 0.9, -0.8851955, -0.16256967, -7.106146e-09, 1.012583, -2.3841858e-07, 0.1280543)
+[node name="BattleStage" type="Node3D" parent="SubViewportContainer/Test" unique_id=302447091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015, 0, -0.11)
+
+[node name="Floor1" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage" unique_id=715370700]
+transform = Transform3D(0.4057955, 0, 0.8033242, 0, 0.8999999, 0, -0.8033242, 0, 0.4057955, 1.0274385, -2.3841858e-07, 0.27881575)
 mesh = SubResource("QuadMesh_57qmd")
 
-[node name="RotatingCircle" type="MeshInstance3D" parent="BattleStage/Floor1" unique_id=1444942579]
+[node name="RotatingCircle" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage/Floor1" unique_id=1444942579]
 transform = Transform3D(0.9999997, -1.4901161e-08, 0, 1.4901161e-08, 0.9999997, 5.551115e-16, 0, 4.107825e-15, 0.9999998, 0, 0, 0)
 sorting_offset = 1.0
 mesh = SubResource("QuadMesh_yf5fn")
@@ -114,34 +191,76 @@ script = ExtResource("12_mhym6")
 bring_in_x = 0.6
 bring_in_y = 0.65
 
-[node name="Floor2" type="MeshInstance3D" parent="BattleStage" unique_id=2000309501]
-transform = Transform3D(-0.11305873, 0.9935884, 4.3431115e-08, 2.2377658e-17, -4.371138e-08, 1, 0.9935884, 0.11305873, 4.9419535e-09, -0.5553587, 0, 0.09381355)
+[node name="Combatant" parent="SubViewportContainer/Test/BattleStage/Floor1" unique_id=432563259 instance=ExtResource("7_ehkex")]
+transform = Transform3D(-0.9680405, 0, 0.25079352, 0, 0.99999994, 0, -0.25079352, 0, -0.9680405, 0, 0, 0)
+
+[node name="Floor2" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage" unique_id=2000309501]
+transform = Transform3D(0.2775935, 0, 0.96069866, 0, 1.0000002, 0, -0.9606987, 0, 0.27759352, -0.1320493, 0, -0.19344167)
 mesh = SubResource("QuadMesh_57qmd")
 
-[node name="RotatingCircle" type="MeshInstance3D" parent="BattleStage/Floor2" unique_id=1194594718]
-transform = Transform3D(-0.8978992, -0.061448187, -2.6859879e-09, 0.061448187, -0.8978992, -7.858865e-08, 2.6859839e-09, -7.8588634e-08, 0.8999996, -0.14324826, 1.5617595, -1.701519e-07)
+[node name="RotatingCircle" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage/Floor2" unique_id=1194594718]
+transform = Transform3D(0.8999994, 0, 0, 0, 0.8999994, 0, 0, 0, 0.8999996, 0, 0, 0)
 sorting_offset = 1.0
 mesh = SubResource("QuadMesh_yf5fn")
 script = ExtResource("12_mhym6")
 bring_in_x = 0.6
 bring_in_y = 0.65
 
-[node name="Floor3" type="MeshInstance3D" parent="BattleStage" unique_id=1839684361]
-transform = Transform3D(-0.55729115, 0.83031714, 3.6294313e-08, 0, -4.371139e-08, 1, 0.83031714, 0.55729115, 2.4359972e-08, -0.0019341856, -2.3841858e-07, -1.1873754)
+[node name="Combatant" parent="SubViewportContainer/Test/BattleStage/Floor2" unique_id=2073513467 instance=ExtResource("7_ehkex")]
+transform = Transform3D(0.9799386, 0, -0.19929942, 0, 0.99999976, 0, 0.19929937, 0, 0.97993875, 0, 0, 0)
+
+[node name="Floor3" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage" unique_id=1839684361]
+transform = Transform3D(0.7245781, 0, 0.68919295, 0, 1, 0, -0.68919295, 0, 0.7245781, 0.40430498, 0, -0.92023385)
 mesh = SubResource("QuadMesh_57qmd")
 
-[node name="RotatingCircle" type="MeshInstance3D" parent="BattleStage/Floor3" unique_id=1728641105]
-transform = Transform3D(-0.82559085, 0.35832697, 1.5662971e-08, -0.35832697, -0.82559085, -7.5427955e-08, -1.566297e-08, -7.542793e-08, 0.89999944, 0.5268426, 1.5754482, 6.8865035e-08)
+[node name="RotatingCircle" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage/Floor3" unique_id=1728641105]
+transform = Transform3D(0.8999992, 0, 0, 0, 0.8999992, 0, 0, 0, 0.89999944, 0, 0, 0)
 sorting_offset = 1.0
 mesh = SubResource("QuadMesh_yf5fn")
 script = ExtResource("12_mhym6")
 bring_in_x = 0.6
 bring_in_y = 0.65
 
-[node name="Trace" type="MeshInstance3D" parent="BattleStage" unique_id=1067684258]
-transform = Transform3D(0.02875184, -0.298619, -1.3053051e-08, 1.962946e-16, -1.3113416e-08, 0.29999998, -0.298619, -0.02875184, -1.2567828e-09, 0.22999442, -0.021153212, 0.11547431)
+[node name="Combatant" parent="SubViewportContainer/Test/BattleStage/Floor3" unique_id=335658168 instance=ExtResource("7_ehkex")]
+transform = Transform3D(0.96445704, 0, -0.26423982, 0, 0.9999999, 0, 0.26423982, 0, 0.96445704, 0, 0, 0)
+
+[node name="Trace" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage" unique_id=1067684258]
+transform = Transform3D(0.11753224, -0.27601838, -1.2065149e-08, -4.6416246e-16, -1.3113416e-08, 0.29999992, -0.27601838, -0.11753224, -5.1374927e-09, 0.44640046, -0.021153212, 0.030795932)
 mesh = SubResource("QuadMesh_d0u6y")
 
-[node name="Trace2" type="MeshInstance3D" parent="BattleStage" unique_id=218998675]
-transform = Transform3D(0.18693502, -0.23463857, -1.0256378e-08, 5.5191756e-16, -1.3113419e-08, 0.30000004, -0.23463857, -0.18693502, -8.171192e-09, 0.50200564, -0.021153212, -0.5583939)
+[node name="Trace2" type="MeshInstance3D" parent="SubViewportContainer/Test/BattleStage" unique_id=218998675]
+transform = Transform3D(0.24952416, -0.16654631, -7.279974e-09, 2.4095063e-15, -1.3113418e-08, 0.30000004, -0.16654631, -0.24952416, -1.0907051e-08, 0.71781296, -0.021153212, -0.32445472)
 mesh = SubResource("QuadMesh_a3se8")
+
+[node name="BlackBorder" type="MeshInstance3D" parent="SubViewportContainer/Test" unique_id=1890405854]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5755928, 0, 0)
+layers = 2
+mesh = SubResource("QuadMesh_0m0f1")
+
+[node name="WhiteBorder" type="MeshInstance3D" parent="SubViewportContainer/Test" unique_id=975213967]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5755928, 0, 0)
+layers = 2
+mesh = SubResource("QuadMesh_5tkv4")
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="." unique_id=364564048]
+material = SubResource("ShaderMaterial_0m0f1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2" unique_id=1021068605]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer2/SubViewport" unique_id=736595470 node_paths=PackedStringArray("camera")]
+transform = Transform3D(-1.6635525e-08, -0.67572826, 0.73715085, -2.9537016e-08, 0.73715085, 0.67572826, -1, -1.05321405e-08, -3.2221887e-08, 1.67, 0.868, -0.147)
+cull_mask = 1047555
+script = ExtResource("10_00tp4")
+camera = NodePath("../../../SubViewportContainer/Test/Camera3D")

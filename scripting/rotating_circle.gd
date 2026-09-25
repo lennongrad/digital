@@ -17,4 +17,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	timer += delta * rotation_speed
 	position.x = cos(timer) * parent_size.x / 2 * bring_in_x
-	position.y = sin(timer) * parent_size.y / 2 * bring_in_y
+	position.z = sin(timer) * parent_size.y / 2 * bring_in_y

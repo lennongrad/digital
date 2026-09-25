@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bpdnyfit1aw4o"]
 
-[ext_resource type="Shader" uid="uid://c4ner03umy3o1" path="res://soretro.gdshader" id="1_kshcw"]
 [ext_resource type="Texture2D" uid="uid://cqr854ebpbvsj" path="res://assets/ui/window.png" id="1_tiqs3"]
 [ext_resource type="PackedScene" uid="uid://doxxl338bp2s6" path="res://test.tscn" id="1_vfvc6"]
 [ext_resource type="Texture2D" uid="uid://dxgfbpgbe5hub" path="res://assets/ui/nibblings/nibbling1.png" id="2_kshcw"]
@@ -9,13 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cl7epjb2krm3u" path="res://assets/ui/nibblings/nibbling2mask.png" id="5_ub64p"]
 [ext_resource type="Texture2D" uid="uid://c0skr0oc20xdp" path="res://assets/ui/nibblings/nibbling2.png" id="6_wevra"]
 [ext_resource type="Texture2D" uid="uid://wllf4hngir4b" path="res://assets/ui/nibblings/nibbling4.png" id="8_heb20"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tiqs3"]
-shader = ExtResource("1_kshcw")
-shader_parameter/y_res = 220
-shader_parameter/fisheye = 0.0
-shader_parameter/color_depth = 14.0
-shader_parameter/active = false
 
 [sub_resource type="SystemFont" id="SystemFont_n0ie2"]
 font_names = PackedStringArray("Courier New")
@@ -68,22 +60,16 @@ offset_bottom = 0.15597534
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="NinePatchRect/View" unique_id=65844545]
-material = SubResource("ShaderMaterial_tiqs3")
+[node name="Control" type="Control" parent="NinePatchRect/View" unique_id=1578266363]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="NinePatchRect/View/SubViewportContainer" unique_id=1646557726]
-handle_input_locally = false
-size = Vector2i(902, 478)
-render_target_update_mode = 4
-
-[node name="Test" parent="NinePatchRect/View/SubViewportContainer/SubViewport" unique_id=136815841 instance=ExtResource("1_vfvc6")]
+[node name="Test" parent="NinePatchRect/View/Control" unique_id=136815841 instance=ExtResource("1_vfvc6")]
+layout_mode = 1
 
 [node name="Nibblings" type="Control" parent="NinePatchRect/View" unique_id=470062409 node_paths=PackedStringArray("label", "hbox", "gear")]
 layout_mode = 1
@@ -137,10 +123,10 @@ anchor_left = 0.776
 anchor_top = 0.006
 anchor_right = 0.85
 anchor_bottom = 0.060000002
-offset_left = 0.047973633
+offset_left = 3.729309
 offset_top = 0.11199999
 offset_right = -0.2000122
-offset_bottom = 0.11999893
+offset_bottom = -1.3105412
 grow_horizontal = 2
 texture = ExtResource("4_bmjtd")
 
@@ -162,9 +148,12 @@ texture = ExtResource("5_ub64p")
 [node name="Nibbling2" type="TextureRect" parent="NinePatchRect/View/Nibblings/Nibbling2Mask" unique_id=220680238]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.07
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.93000007
+offset_left = -0.05395031
+offset_bottom = 0.05088806
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
