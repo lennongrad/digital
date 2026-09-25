@@ -30,7 +30,7 @@ size = Vector2(22, 1.2)
 transparency = 4
 albedo_color = Color(1, 1, 1, 0.047058824)
 albedo_texture = ExtResource("13_0m0f1")
-uv1_scale = Vector3(10, 10, 10)
+uv1_scale = Vector3(20, 20, 20)
 texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_3gngh"]
@@ -45,7 +45,7 @@ texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_77dp3"]
 material = SubResource("StandardMaterial3D_00tp4")
-size = Vector2(80, 80)
+size = Vector2(120, 80)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykrsh"]
 transparency = 1
@@ -151,7 +151,7 @@ cull_mask = 1048573
 compositor = SubResource("Compositor_8uh7m")
 current = true
 fov = 81.3
-far = 2000.0
+far = 3000.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/Test" unique_id=416986912]
 transform = Transform3D(0.9778342, -0.18123087, 0.10485978, -0.1031039, 0.019109137, 0.994487, -0.18223554, -0.9832549, -4.2979437e-08, -7.1949997, 0, 3.4040003)
