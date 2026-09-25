@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://doxxl338bp2s6"]
+
+[ext_resource type="Texture2D" uid="uid://bplfgth7un44o" path="res://assets/battle/roadtexture.png" id="1_37kl0"]
+[ext_resource type="Script" uid="uid://dhuf51s6fiqm2" path="res://scripting/road.gd" id="2_6uqi0"]
+[ext_resource type="Texture2D" uid="uid://cr18dgmvpq0gs" path="res://assets/battle/floor.png" id="4_ppyta"]
+[ext_resource type="Texture2D" uid="uid://cw6k7oerwwoig" path="res://assets/battle/circle.png" id="12_a3se8"]
+[ext_resource type="Texture2D" uid="uid://cdva0gsl72gkv" path="res://assets/battle/trace2.png" id="12_b0q6j"]
+[ext_resource type="Script" uid="uid://bxub16xaqwfrv" path="res://scripting/rotating_circle.gd" id="12_mhym6"]
+[ext_resource type="Texture2D" uid="uid://co3oa7wfdwnb1" path="res://assets/battle/warped.png" id="13_0m0f1"]
+
+[sub_resource type="Environment" id="Environment_g4v7s"]
+background_mode = 1
+background_color = Color(1, 0.003921569, 0.44313726, 1)
+
+[sub_resource type="Compositor" id="Compositor_8uh7m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uh7m"]
+transparency = 4
+albedo_texture = ExtResource("1_37kl0")
+metallic_specular = 0.0
+uv1_scale = Vector3(9, 1, 1)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_g4v7s"]
+material = SubResource("StandardMaterial3D_8uh7m")
+size = Vector2(18, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0q6j"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.019607844)
+albedo_texture = ExtResource("13_0m0f1")
+uv1_scale = Vector3(10, 10, 10)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_3gngh"]
+material = SubResource("StandardMaterial3D_b0q6j")
+size = Vector2(40, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykrsh"]
+transparency = 1
+albedo_texture = ExtResource("4_ppyta")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_57qmd"]
+material = SubResource("StandardMaterial3D_ykrsh")
+size = Vector2(2, 1.105)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+transparency = 1
+albedo_texture = ExtResource("12_a3se8")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_yf5fn"]
+material = SubResource("StandardMaterial3D_57qmd")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m0f1"]
+transparency = 1
+albedo_texture = ExtResource("12_b0q6j")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_d0u6y"]
+material = SubResource("StandardMaterial3D_0m0f1")
+size = Vector2(2, 3)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b0q6j"]
+load_path = "res://.godot/imported/trace.png-cac078db21d0f67a08d7152fadb74a41.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhym6"]
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_b0q6j")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_a3se8"]
+material = SubResource("StandardMaterial3D_mhym6")
+size = Vector2(1, 3)
+
+[node name="Test" type="Node3D" unique_id=136815841]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=443927224]
+transform = Transform3D(-3.0762106e-08, -0.7104428, 0.70375496, -3.105444e-08, 0.70375496, 0.7104428, -1, -1.7763568e-15, -4.371139e-08, 1.6865622, 1.4147274, -0.0007904321)
+environment = SubResource("Environment_g4v7s")
+compositor = SubResource("Compositor_8uh7m")
+current = true
+fov = 81.3
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=416986912]
+transform = Transform3D(0.9832549, -0.18223554, -7.9657685e-09, 0, -4.371139e-08, 1, -0.18223554, -0.9832549, -4.2979437e-08, -7.1949997, 0, 3.4040003)
+
+[node name="Background" type="Node3D" parent="." unique_id=2118919408]
+
+[node name="Road" type="MeshInstance3D" parent="Background" unique_id=1218180659]
+transform = Transform3D(0.9832549, -0.18223554, -7.96577e-09, 0, -4.371139e-08, 1, -0.18223554, -0.9832549, -4.2979437e-08, -7.1949997, 0.02730751, 3.4040003)
+mesh = SubResource("QuadMesh_g4v7s")
+script = ExtResource("2_6uqi0")
+
+[node name="Checkers" type="MeshInstance3D" parent="Background" unique_id=821830674]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.09322739, 0.015395641, 0.017939448)
+mesh = SubResource("QuadMesh_3gngh")
+script = ExtResource("2_6uqi0")
+velocity = 0.05
+
+[node name="BattleStage" type="Node3D" parent="." unique_id=302447091]
+
+[node name="Floor1" type="MeshInstance3D" parent="BattleStage" unique_id=715370700]
+transform = Transform3D(0.16256967, -0.8851955, -3.8693123e-08, 0, -3.934025e-08, 0.9, -0.8851955, -0.16256967, -7.106146e-09, 1.012583, -2.3841858e-07, 0.1280543)
+mesh = SubResource("QuadMesh_57qmd")
+
+[node name="RotatingCircle" type="MeshInstance3D" parent="BattleStage/Floor1" unique_id=1444942579]
+transform = Transform3D(0.9999997, -1.4901161e-08, 0, 1.4901161e-08, 0.9999997, 5.551115e-16, 0, 4.107825e-15, 0.9999998, 0, 0, 0)
+sorting_offset = 1.0
+mesh = SubResource("QuadMesh_yf5fn")
+script = ExtResource("12_mhym6")
+bring_in_x = 0.6
+bring_in_y = 0.65
+
+[node name="Floor2" type="MeshInstance3D" parent="BattleStage" unique_id=2000309501]
+transform = Transform3D(-0.11305873, 0.9935884, 4.3431115e-08, 2.2377658e-17, -4.371138e-08, 1, 0.9935884, 0.11305873, 4.9419535e-09, -0.5553587, 0, 0.09381355)
+mesh = SubResource("QuadMesh_57qmd")
+
+[node name="RotatingCircle" type="MeshInstance3D" parent="BattleStage/Floor2" unique_id=1194594718]
+transform = Transform3D(-0.8978992, -0.061448187, -2.6859879e-09, 0.061448187, -0.8978992, -7.858865e-08, 2.6859839e-09, -7.8588634e-08, 0.8999996, -0.14324826, 1.5617595, -1.701519e-07)
+sorting_offset = 1.0
+mesh = SubResource("QuadMesh_yf5fn")
+script = ExtResource("12_mhym6")
+bring_in_x = 0.6
+bring_in_y = 0.65
+
+[node name="Floor3" type="MeshInstance3D" parent="BattleStage" unique_id=1839684361]
+transform = Transform3D(-0.55729115, 0.83031714, 3.6294313e-08, 0, -4.371139e-08, 1, 0.83031714, 0.55729115, 2.4359972e-08, -0.0019341856, -2.3841858e-07, -1.1873754)
+mesh = SubResource("QuadMesh_57qmd")
+
+[node name="RotatingCircle" type="MeshInstance3D" parent="BattleStage/Floor3" unique_id=1728641105]
+transform = Transform3D(-0.82559085, 0.35832697, 1.5662971e-08, -0.35832697, -0.82559085, -7.5427955e-08, -1.566297e-08, -7.542793e-08, 0.89999944, 0.5268426, 1.5754482, 6.8865035e-08)
+sorting_offset = 1.0
+mesh = SubResource("QuadMesh_yf5fn")
+script = ExtResource("12_mhym6")
+bring_in_x = 0.6
+bring_in_y = 0.65
+
+[node name="Trace" type="MeshInstance3D" parent="BattleStage" unique_id=1067684258]
+transform = Transform3D(0.02875184, -0.298619, -1.3053051e-08, 1.962946e-16, -1.3113416e-08, 0.29999998, -0.298619, -0.02875184, -1.2567828e-09, 0.22999442, -0.021153212, 0.11547431)
+mesh = SubResource("QuadMesh_d0u6y")
+
+[node name="Trace2" type="MeshInstance3D" parent="BattleStage" unique_id=218998675]
+transform = Transform3D(0.18693502, -0.23463857, -1.0256378e-08, 5.5191756e-16, -1.3113419e-08, 0.30000004, -0.23463857, -0.18693502, -8.171192e-09, 0.50200564, -0.021153212, -0.5583939)
+mesh = SubResource("QuadMesh_a3se8")
