@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://doxxl338bp2s6"]
 
 [ext_resource type="Texture2D" uid="uid://bplfgth7un44o" path="res://assets/battle/roadtexture.png" id="1_37kl0"]
-[ext_resource type="Script" uid="uid://dhuf51s6fiqm2" path="res://scripting/road.gd" id="2_6uqi0"]
+[ext_resource type="Script" uid="uid://dhuf51s6fiqm2" path="res://assets/battle/road.gd" id="2_6uqi0"]
 [ext_resource type="Texture2D" uid="uid://cr18dgmvpq0gs" path="res://assets/battle/floor.png" id="4_ppyta"]
-[ext_resource type="PackedScene" uid="uid://bppyelov4sjdq" path="res://test_combatant.tscn" id="7_ehkex"]
+[ext_resource type="PackedScene" uid="uid://bppyelov4sjdq" path="res://assets/battle/combatant.tscn" id="7_ehkex"]
 [ext_resource type="Texture2D" uid="uid://cc18e62cyq10t" path="res://assets/battle/floor_simple.png" id="8_5tkv4"]
-[ext_resource type="Shader" uid="uid://c4ner03umy3o1" path="res://soretro.gdshader" id="9_77dp3"]
+[ext_resource type="Shader" uid="uid://c4ner03umy3o1" path="res://assets/soretro.gdshader" id="9_77dp3"]
 [ext_resource type="Shader" uid="uid://b2u23co4t8n7p" path="res://assets/combatants/placeholderbot/border2.gdshader" id="10_77dp3"]
 [ext_resource type="Texture2D" uid="uid://cw6k7oerwwoig" path="res://assets/battle/circle.png" id="12_a3se8"]
 [ext_resource type="Texture2D" uid="uid://cdva0gsl72gkv" path="res://assets/battle/trace2.png" id="12_b0q6j"]
-[ext_resource type="Script" uid="uid://bxub16xaqwfrv" path="res://scripting/rotating_circle.gd" id="12_mhym6"]
+[ext_resource type="Script" uid="uid://bxub16xaqwfrv" path="res://assets/battle/rotating_circle.gd" id="12_mhym6"]
 [ext_resource type="Texture2D" uid="uid://co3oa7wfdwnb1" path="res://assets/battle/warped.png" id="13_0m0f1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b0q6j"]
 shader = ExtResource("9_77dp3")
-shader_parameter/y_res = 200
+shader_parameter/y_res = 240
 shader_parameter/fisheye = 0.1
 shader_parameter/color_depth = 10.0
 shader_parameter/active = true
@@ -56,7 +56,7 @@ size = Vector2(120, 80)
 render_priority = 0
 shader = ExtResource("10_77dp3")
 shader_parameter/step_count = 3
-shader_parameter/thickness = 2.7000000253320398
+shader_parameter/thickness = 2.70000002533204
 shader_parameter/edge_color = Color(0, 0, 0, 1)
 shader_parameter/fade_start = 538.1000080034345
 shader_parameter/fade_length = 12.0000001639132
@@ -69,10 +69,10 @@ size = Vector2(20, 20)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_77dp3"]
 render_priority = 0
 shader = ExtResource("10_77dp3")
-shader_parameter/step_count = 13
-shader_parameter/thickness = 7.5000000968578
+shader_parameter/step_count = 5
+shader_parameter/thickness = 9.0000001192096
 shader_parameter/edge_color = Color(1, 1, 1, 1)
-shader_parameter/fade_start = 100.0
+shader_parameter/fade_start = 110.70000163466165
 shader_parameter/fade_length = 200.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_5tkv4"]
@@ -184,7 +184,7 @@ script = ExtResource("2_6uqi0")
 velocity = 0.05
 
 [node name="BlackBorder" type="MeshInstance3D" parent="SubViewportContainer/Test" unique_id=1890405854]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5755928, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.623, 0, 0.003)
 layers = 2
 mesh = SubResource("QuadMesh_0m0f1")
 

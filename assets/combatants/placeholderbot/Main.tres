@@ -1,10 +1,18 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dmwc6elg5j58y"]
 
+[ext_resource type="Shader" uid="uid://bielj3qnctx63" path="res://assets/combatants/placeholderbot/test16.gdshader" id="1_c55rk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkaba"]
+render_priority = 0
+shader = ExtResource("1_c55rk")
+
 [resource]
 resource_name = "Main"
+next_pass = SubResource("ShaderMaterial_qkaba")
+transparency = 1
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(1.4439225e-06, 0.57538414, 0.8190251, 1)
+albedo_color = Color(0, 0.5739998, 0.82, 0)
 metallic_specular = 0.0
 roughness = 0.57
 metadata/extras = {

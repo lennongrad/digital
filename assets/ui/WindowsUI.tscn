@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bpdnyfit1aw4o"]
 
-[ext_resource type="Texture2D" uid="uid://cqr854ebpbvsj" path="res://assets/ui/window.png" id="1_tiqs3"]
-[ext_resource type="PackedScene" uid="uid://doxxl338bp2s6" path="res://test.tscn" id="1_vfvc6"]
-[ext_resource type="Texture2D" uid="uid://dxgfbpgbe5hub" path="res://assets/ui/nibblings/nibbling1.png" id="2_kshcw"]
-[ext_resource type="Script" uid="uid://cioj33f8turf" path="res://scripting/ui/nibbling.gd" id="2_ow83g"]
-[ext_resource type="Texture2D" uid="uid://bxthuqb3dja8y" path="res://assets/ui/nibblings/nibbling3.png" id="4_bmjtd"]
-[ext_resource type="Texture2D" uid="uid://cl7epjb2krm3u" path="res://assets/ui/nibblings/nibbling2mask.png" id="5_ub64p"]
-[ext_resource type="Texture2D" uid="uid://c0skr0oc20xdp" path="res://assets/ui/nibblings/nibbling2.png" id="6_wevra"]
+[ext_resource type="Texture2D" uid="uid://cqr854ebpbvsj" path="res://assets/ui/window.png" id="1_y8b0i"]
+[ext_resource type="PackedScene" uid="uid://doxxl338bp2s6" path="res://assets/battle/Battle.tscn" id="2_375cl"]
+[ext_resource type="Script" uid="uid://cioj33f8turf" path="res://assets/ui/nibblings/nibbling.gd" id="3_0oxln"]
+[ext_resource type="Texture2D" uid="uid://dxgfbpgbe5hub" path="res://assets/ui/nibblings/nibbling1.png" id="4_58hna"]
+[ext_resource type="Texture2D" uid="uid://bxthuqb3dja8y" path="res://assets/ui/nibblings/nibbling3.png" id="5_rkb4g"]
+[ext_resource type="Texture2D" uid="uid://cl7epjb2krm3u" path="res://assets/ui/nibblings/nibbling2mask.png" id="6_dl1k6"]
+[ext_resource type="Texture2D" uid="uid://c0skr0oc20xdp" path="res://assets/ui/nibblings/nibbling2.png" id="7_n2l8d"]
+[ext_resource type="Shader" uid="uid://bg62kyd0dmhf2" path="res://assets/ui/billiards.gdshader" id="8_mv7kv"]
 
 [sub_resource type="SystemFont" id="SystemFont_n0ie2"]
 font_names = PackedStringArray("Courier New")
@@ -20,6 +21,32 @@ keep_rounding_remainders = false
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_conml"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="Gradient" id="Gradient_tiqs3"]
+colors = PackedColorArray(0.2646, 0.54, 0.26919, 1, 0.20620003, 0.4, 0.19600001, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tiqs3"]
+gradient = SubResource("Gradient_tiqs3")
+fill_to = Vector2(0.7070707, 0.61616164)
+
+[sub_resource type="Gradient" id="Gradient_bmjtd"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tiqs3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kshcw"]
+noise = SubResource("FastNoiseLite_tiqs3")
+color_ramp = SubResource("Gradient_bmjtd")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57qmd"]
+shader = ExtResource("8_mv7kv")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_kshcw")
+shader_parameter/back_tex = SubResource("GradientTexture2D_tiqs3")
+
+[sub_resource type="Gradient" id="Gradient_kshcw"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g4v7s"]
+gradient = SubResource("Gradient_kshcw")
+
 [node name="Node3D" type="Control" unique_id=497584027]
 layout_mode = 3
 anchors_preset = 15
@@ -28,24 +55,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1391889935]
+[node name="BattleDisplay" type="NinePatchRect" parent="." unique_id=1391889935]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 93.0
+offset_left = 131.0
 offset_top = 68.0
-offset_right = -142.0
+offset_right = -104.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_tiqs3")
+texture = ExtResource("1_y8b0i")
 patch_margin_left = 30
 patch_margin_top = 70
 patch_margin_right = 150
 patch_margin_bottom = 30
 
-[node name="View" type="Control" parent="NinePatchRect" unique_id=1413776642]
+[node name="View" type="Control" parent="BattleDisplay" unique_id=1413776642]
 show_behind_parent = true
 layout_mode = 1
 anchor_left = 0.006
@@ -59,7 +87,7 @@ offset_bottom = 0.15597534
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="NinePatchRect/View" unique_id=1578266363]
+[node name="Control" type="Control" parent="BattleDisplay/View" unique_id=1578266363]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,22 +95,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Test" parent="NinePatchRect/View/Control" unique_id=136815841 instance=ExtResource("1_vfvc6")]
+[node name="Control" parent="BattleDisplay/View/Control" unique_id=1604289775 instance=ExtResource("2_375cl")]
 layout_mode = 1
 
-[node name="Nibblings" type="Control" parent="NinePatchRect/View" unique_id=470062409 node_paths=PackedStringArray("label", "hbox", "gear")]
+[node name="Nibblings" type="Control" parent="BattleDisplay/View" unique_id=470062409 node_paths=PackedStringArray("label", "hbox", "gear")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_ow83g")
+script = ExtResource("3_0oxln")
 label = NodePath("Nibbling1/Label")
 hbox = NodePath("Nibbling4/HBoxContainer")
 gear = NodePath("NibblingPair/Nibbling2Mask/Nibbling2")
 
-[node name="Nibbling1" type="TextureRect" parent="NinePatchRect/View/Nibblings" unique_id=1253860373]
+[node name="Nibbling1" type="TextureRect" parent="BattleDisplay/View/Nibblings" unique_id=1253860373]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -95,9 +123,9 @@ offset_top = -0.08580017
 offset_right = 0.3764038
 offset_bottom = 0.088760376
 grow_horizontal = 2
-texture = ExtResource("2_kshcw")
+texture = ExtResource("4_58hna")
 
-[node name="Label" type="Label" parent="NinePatchRect/View/Nibblings/Nibbling1" unique_id=1327952010]
+[node name="Label" type="Label" parent="BattleDisplay/View/Nibblings/Nibbling1" unique_id=1327952010]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.037
@@ -114,7 +142,7 @@ text = "33234905"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Nibbling4" type="TextureRect" parent="NinePatchRect/View/Nibblings" unique_id=1128307317]
+[node name="Nibbling4" type="TextureRect" parent="BattleDisplay/View/Nibblings" unique_id=1128307317]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -127,7 +155,7 @@ offset_top = -0.23325348
 offset_right = -0.20684814
 offset_bottom = 0.21437073
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/View/Nibblings/Nibbling4" unique_id=803015719]
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleDisplay/View/Nibblings/Nibbling4" unique_id=803015719]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,7 +167,7 @@ offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar8" type="ProgressBar" parent="NinePatchRect/View/Nibblings/Nibbling4/HBoxContainer" unique_id=937344080]
+[node name="ProgressBar8" type="ProgressBar" parent="BattleDisplay/View/Nibblings/Nibbling4/HBoxContainer" unique_id=937344080]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -149,7 +177,7 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect/View/Nibblings/Nibbling4/HBoxContainer" unique_id=2103216974]
+[node name="ProgressBar" type="ProgressBar" parent="BattleDisplay/View/Nibblings/Nibbling4/HBoxContainer" unique_id=2103216974]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -159,7 +187,7 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ProgressBar6" type="ProgressBar" parent="NinePatchRect/View/Nibblings/Nibbling4/HBoxContainer" unique_id=1776292381]
+[node name="ProgressBar6" type="ProgressBar" parent="BattleDisplay/View/Nibblings/Nibbling4/HBoxContainer" unique_id=1776292381]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -169,7 +197,7 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ProgressBar7" type="ProgressBar" parent="NinePatchRect/View/Nibblings/Nibbling4/HBoxContainer" unique_id=2021411397]
+[node name="ProgressBar7" type="ProgressBar" parent="BattleDisplay/View/Nibblings/Nibbling4/HBoxContainer" unique_id=2021411397]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -179,7 +207,7 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ProgressBar2" type="ProgressBar" parent="NinePatchRect/View/Nibblings/Nibbling4/HBoxContainer" unique_id=2029173914]
+[node name="ProgressBar2" type="ProgressBar" parent="BattleDisplay/View/Nibblings/Nibbling4/HBoxContainer" unique_id=2029173914]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -189,7 +217,7 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ProgressBar3" type="ProgressBar" parent="NinePatchRect/View/Nibblings/Nibbling4/HBoxContainer" unique_id=216292453]
+[node name="ProgressBar3" type="ProgressBar" parent="BattleDisplay/View/Nibblings/Nibbling4/HBoxContainer" unique_id=216292453]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -199,7 +227,7 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ProgressBar4" type="ProgressBar" parent="NinePatchRect/View/Nibblings/Nibbling4/HBoxContainer" unique_id=89096842]
+[node name="ProgressBar4" type="ProgressBar" parent="BattleDisplay/View/Nibblings/Nibbling4/HBoxContainer" unique_id=89096842]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -209,7 +237,7 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ProgressBar5" type="ProgressBar" parent="NinePatchRect/View/Nibblings/Nibbling4/HBoxContainer" unique_id=1111266903]
+[node name="ProgressBar5" type="ProgressBar" parent="BattleDisplay/View/Nibblings/Nibbling4/HBoxContainer" unique_id=1111266903]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -219,7 +247,7 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 
-[node name="NibblingPair" type="Control" parent="NinePatchRect/View/Nibblings" unique_id=1105941603]
+[node name="NibblingPair" type="Control" parent="BattleDisplay/View/Nibblings" unique_id=1105941603]
 layout_mode = 1
 anchor_left = 0.85300004
 anchor_right = 1.005
@@ -228,7 +256,7 @@ offset_left = 0.01574707
 offset_right = -0.13348389
 offset_bottom = 0.18346405
 
-[node name="Nibbling3" type="TextureRect" parent="NinePatchRect/View/Nibblings/NibblingPair" unique_id=841641796]
+[node name="Nibbling3" type="TextureRect" parent="BattleDisplay/View/Nibblings/NibblingPair" unique_id=841641796]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -242,9 +270,9 @@ offset_right = -0.014907837
 offset_bottom = -0.02300644
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_bmjtd")
+texture = ExtResource("5_rkb4g")
 
-[node name="Nibbling2Mask" type="TextureRect" parent="NinePatchRect/View/Nibblings/NibblingPair" unique_id=1908635393]
+[node name="Nibbling2Mask" type="TextureRect" parent="BattleDisplay/View/Nibblings/NibblingPair" unique_id=1908635393]
 clip_children = 1
 texture_filter = 1
 layout_mode = 1
@@ -257,9 +285,9 @@ offset_left = 0.0013125539
 offset_top = 0.015945435
 offset_right = 0.0440979
 offset_bottom = 0.0048599243
-texture = ExtResource("5_ub64p")
+texture = ExtResource("6_dl1k6")
 
-[node name="Nibbling2" type="TextureRect" parent="NinePatchRect/View/Nibblings/NibblingPair/Nibbling2Mask" unique_id=220680238]
+[node name="Nibbling2" type="TextureRect" parent="BattleDisplay/View/Nibblings/NibblingPair/Nibbling2Mask" unique_id=220680238]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -273,4 +301,43 @@ offset_bottom = -0.032913208
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
-texture = ExtResource("6_wevra")
+texture = ExtResource("7_n2l8d")
+
+[node name="CardDisplay" type="NinePatchRect" parent="." unique_id=196376226]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 768.0
+offset_top = 443.0
+offset_right = -39.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y8b0i")
+patch_margin_left = 30
+patch_margin_top = 70
+patch_margin_right = 150
+patch_margin_bottom = 30
+
+[node name="Control" type="Control" parent="CardDisplay" unique_id=1096829537]
+layout_mode = 1
+anchor_left = 0.014
+anchor_top = 0.11000001
+anchor_right = 0.98600006
+anchor_bottom = 0.97
+offset_left = 0.17000008
+offset_top = -0.040000916
+offset_right = -0.17001343
+offset_bottom = -0.08000183
+
+[node name="Background" type="TextureRect" parent="CardDisplay/Control" unique_id=1418995459]
+material = SubResource("ShaderMaterial_57qmd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_g4v7s")

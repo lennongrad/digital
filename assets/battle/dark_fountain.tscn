@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cqj6x76fpdb8l"]
+
+[ext_resource type="Shader" uid="uid://crd0vnjx6pon2" path="res://assets/battle/darkfountainparticles.gdshader" id="1_lnshx"]
+[ext_resource type="Texture2D" uid="uid://dqswhcnskckjy" path="res://assets/battle/depth.png" id="2_s1v0u"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+direction = Vector3(0, 1, 0)
+spread = 36.176
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57qmd"]
+render_priority = 0
+shader = ExtResource("1_lnshx")
+shader_parameter/back_tex = ExtResource("2_s1v0u")
+
+[sub_resource type="SphereMesh" id="SphereMesh_yf5fn"]
+material = SubResource("ShaderMaterial_57qmd")
+radius = 0.1
+height = 0.2
+
+[node name="Dark Fountain" type="GPUParticles3D" unique_id=725751826]
+cast_shadow = 0
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("SphereMesh_yf5fn")
