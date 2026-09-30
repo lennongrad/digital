@@ -15,10 +15,16 @@ run/main_scene="uid://bpdnyfit1aw4o"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CardsManager="*uid://bec4jtv1hmrcm"
+
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
 
 [physics]
 

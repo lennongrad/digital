@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://csja8rw4ppth6"]
+
+[ext_resource type="Script" uid="uid://da83akbgkp1qx" path="res://assets/ui/card_zone.gd" id="1_lfag1"]
+
+[node name="Control" type="Control" unique_id=2117435517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lfag1")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

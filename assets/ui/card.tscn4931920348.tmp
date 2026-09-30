@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dnk68yx1lskkc"]
+
+[ext_resource type="Script" uid="uid://b07r4s6aafrun" path="res://assets/ui/card.gd" id="1_1wt0p"]
+[ext_resource type="Texture2D" uid="uid://dtb30t1irysyx" path="res://assets/ui/solitaire.tres" id="1_ofchk"]
+
+[node name="Card" type="TextureRect" unique_id=914358903]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -48.0
+offset_right = 35.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(35.985, 47.215)
+texture = ExtResource("1_ofchk")
+script = ExtResource("1_1wt0p")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cl7epjb2krm3u" path="res://assets/ui/nibblings/nibbling2mask.png" id="6_dl1k6"]
 [ext_resource type="Texture2D" uid="uid://c0skr0oc20xdp" path="res://assets/ui/nibblings/nibbling2.png" id="7_n2l8d"]
 [ext_resource type="Shader" uid="uid://bg62kyd0dmhf2" path="res://assets/ui/billiards.gdshader" id="8_mv7kv"]
+[ext_resource type="Script" uid="uid://da83akbgkp1qx" path="res://assets/ui/card_zone.gd" id="9_0oxln"]
+[ext_resource type="Script" uid="uid://m202ivnkrnoi" path="res://assets/ui/cards_container.gd" id="9_375cl"]
+[ext_resource type="Texture2D" uid="uid://ce5ckoapf1beo" path="res://assets/ui/folder_opened.png" id="11_dl1k6"]
+[ext_resource type="Script" uid="uid://de3wmkrl4os50" path="res://assets/ui/test_button.gd" id="12_rkb4g"]
 
 [sub_resource type="SystemFont" id="SystemFont_n0ie2"]
 font_names = PackedStringArray("Courier New")
@@ -46,6 +50,7 @@ shader_parameter/back_tex = SubResource("GradientTexture2D_tiqs3")
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_g4v7s"]
 gradient = SubResource("Gradient_kshcw")
+width = 1000
 
 [node name="Node3D" type="Control" unique_id=497584027]
 layout_mode = 3
@@ -58,13 +63,15 @@ grow_vertical = 2
 [node name="BattleDisplay" type="NinePatchRect" parent="." unique_id=1391889935]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 131.0
-offset_top = 68.0
-offset_right = -104.0
-offset_bottom = -80.0
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.063
+anchor_right = 0.943
+anchor_bottom = 0.92300004
+offset_left = 0.43998718
+offset_top = -0.040000916
+offset_right = 0.4399414
+offset_bottom = 0.15997314
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_y8b0i")
@@ -76,14 +83,9 @@ patch_margin_bottom = 30
 [node name="View" type="Control" parent="BattleDisplay" unique_id=1413776642]
 show_behind_parent = true
 layout_mode = 1
-anchor_left = 0.006
-anchor_top = 0.031000001
-anchor_right = 0.99300003
-anchor_bottom = 0.98800004
-offset_left = -0.15999794
-offset_top = 0.09699917
-offset_right = 0.019958496
-offset_bottom = 0.15597534
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -133,11 +135,11 @@ anchor_top = 0.558
 anchor_right = 0.82400006
 anchor_bottom = 0.92300004
 offset_left = 0.00399971
-offset_top = -0.016000748
+offset_top = 0.98399925
 offset_right = 0.0079956055
-offset_bottom = 0.0039978027
+offset_bottom = 1.0039978
 theme_override_fonts/font = SubResource("SystemFont_n0ie2")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "33234905"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -249,25 +251,25 @@ show_percentage = false
 
 [node name="NibblingPair" type="Control" parent="BattleDisplay/View/Nibblings" unique_id=1105941603]
 layout_mode = 1
-anchor_left = 0.85300004
+anchor_left = 0.86700004
 anchor_right = 1.005
-anchor_bottom = 0.15300001
-offset_left = 0.01574707
-offset_right = -0.13348389
-offset_bottom = 0.18346405
+anchor_bottom = 0.208
+offset_left = 0.47991943
+offset_right = -5.133423
+offset_bottom = 0.11647034
 
 [node name="Nibbling3" type="TextureRect" parent="BattleDisplay/View/Nibblings/NibblingPair" unique_id=841641796]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.45400003
+anchor_left = 0.532
 anchor_top = 0.074
 anchor_right = 0.93700004
-anchor_bottom = 0.469
-offset_left = 0.053966522
+anchor_bottom = 0.37600002
+offset_left = -0.0338974
 offset_top = -0.028821945
 offset_right = -0.014907837
-offset_bottom = -0.02300644
+offset_bottom = 0.019470215
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_rkb4g")
@@ -277,42 +279,43 @@ clip_children = 1
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.002
-anchor_top = -0.716
-anchor_right = 0.9250001
-anchor_bottom = 1.3310001
-offset_left = 0.0013125539
-offset_top = 0.015945435
-offset_right = 0.0440979
-offset_bottom = 0.0048599243
+anchor_top = -0.31300002
+anchor_right = 1.0
+anchor_bottom = 0.94400007
+offset_left = -9.0
+offset_top = -3.958126
+offset_right = -9.0
+offset_bottom = -4.050377
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_dl1k6")
 
 [node name="Nibbling2" type="TextureRect" parent="BattleDisplay/View/Nibblings/NibblingPair/Nibbling2Mask" unique_id=220680238]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.033
-anchor_top = 0.079
+anchor_top = 0.093
 anchor_right = 1.0
-anchor_bottom = 0.9250001
-offset_left = -0.007890701
-offset_top = 0.07425785
-offset_bottom = -0.032913208
+anchor_bottom = 1.0
+offset_top = -0.065999985
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
 texture = ExtResource("7_n2l8d")
+stretch_mode = 5
 
 [node name="CardDisplay" type="NinePatchRect" parent="." unique_id=196376226]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 768.0
-offset_top = 443.0
-offset_right = -39.0
-offset_bottom = -41.0
+anchors_preset = -1
+anchor_left = 0.544
+anchor_top = 0.71400005
+anchor_right = 0.98700005
+anchor_bottom = 0.9620001
+offset_left = -0.32006836
+offset_top = -0.08001709
+offset_right = 0.4399414
+offset_bottom = 0.039916992
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_y8b0i")
@@ -322,17 +325,16 @@ patch_margin_right = 150
 patch_margin_bottom = 30
 
 [node name="Control" type="Control" parent="CardDisplay" unique_id=1096829537]
+show_behind_parent = true
 layout_mode = 1
-anchor_left = 0.014
-anchor_top = 0.11000001
-anchor_right = 0.98600006
-anchor_bottom = 0.97
-offset_left = 0.17000008
-offset_top = -0.040000916
-offset_right = -0.17001343
-offset_bottom = -0.08000183
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="CardDisplay/Control" unique_id=1418995459]
+show_behind_parent = true
 material = SubResource("ShaderMaterial_57qmd")
 layout_mode = 1
 anchors_preset = 15
@@ -341,3 +343,98 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_g4v7s")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardDisplay/Control" unique_id=51544047]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.09
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.081199646
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hand" type="Control" parent="CardDisplay/Control/HBoxContainer" unique_id=1542095283]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("9_0oxln")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardDisplay/Control/HBoxContainer" unique_id=1353230198]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Draw" type="Control" parent="CardDisplay/Control/HBoxContainer/VBoxContainer" unique_id=1503744583 node_paths=PackedStringArray("texture_rect")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("9_0oxln")
+shrink = true
+zone = 1
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="CardDisplay/Control/HBoxContainer/VBoxContainer/Draw" unique_id=887213657]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119
+anchor_top = 0.119
+anchor_right = 0.91
+anchor_bottom = 0.91
+offset_left = 0.02699995
+offset_top = 0.027403831
+offset_right = 0.02999878
+offset_bottom = 0.030445099
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_dl1k6")
+stretch_mode = 5
+
+[node name="Discard" type="Control" parent="CardDisplay/Control/HBoxContainer/VBoxContainer" unique_id=1580079754 node_paths=PackedStringArray("texture_rect")]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("9_0oxln")
+shrink = true
+zone = 2
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="CardDisplay/Control/HBoxContainer/VBoxContainer/Discard" unique_id=64558938]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119
+anchor_top = 0.119
+anchor_right = 0.91
+anchor_bottom = 0.91
+offset_left = 0.02699995
+offset_top = 0.027403831
+offset_right = 0.02999878
+offset_bottom = 0.030445099
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_dl1k6")
+stretch_mode = 5
+
+[node name="CardsContainer" type="Control" parent="." unique_id=317439497]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_375cl")
+
+[node name="Button" type="Button" parent="." unique_id=1508076218]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41300002
+anchor_top = 0.89400005
+anchor_right = 0.47500002
+anchor_bottom = 0.9480001
+offset_left = 0.2239685
+offset_top = -0.31201172
+offset_right = -0.2000122
+offset_bottom = -0.30407715
+text = "play cards"
+script = ExtResource("12_rkb4g")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

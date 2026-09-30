@@ -9,7 +9,7 @@ script = ExtResource("1_t2is8")
 
 [node name="Robot" parent="." unique_id=686071879 instance=ExtResource("2_xhw6h")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
+visible = false
 
 [node name="Warrior" parent="." unique_id=236923026 instance=ExtResource("3_mjuc5")]
 transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, 0, 0, 0)
-visible = false

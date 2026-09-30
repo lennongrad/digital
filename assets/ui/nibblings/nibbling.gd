@@ -12,7 +12,6 @@ var timer = 0
 
 func _ready() -> void:
 	for bar in hbox.get_children():
-		print(bar)
 		bars.append(bar)
 
 func _process(delta: float) -> void:
